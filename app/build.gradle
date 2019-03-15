@@ -1,6 +1,8 @@
 apply plugin: 'com.android.application'
 
 android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
     signingConfigs {
         release {
             keyAlias 'jmg'
@@ -9,13 +11,12 @@ android {
             storePassword '295534955'
         }
     }
-    compileSdkVersion 28
     defaultConfig {
         applicationId "com.ys.aaaaa"
-        minSdkVersion 21
-        targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
