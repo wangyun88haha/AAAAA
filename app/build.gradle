@@ -19,6 +19,7 @@ android {
         versionName rootProject.ext.versionName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -26,14 +27,13 @@ android {
             signingConfig signingConfigs.release
             android.applicationVariants.all { variant ->
                 variant.outputs.all {
-                    outputFileName = "xinlebao_${defaultConfig.versionName}_${releaseTime()}.apk"
+                    outputFileName = "oschain_${defaultConfig.versionName}.apk"
                 }
             }
         }
         debug {
             signingConfig signingConfigs.release
         }
-
 
     }
 }
