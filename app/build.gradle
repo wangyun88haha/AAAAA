@@ -20,11 +20,23 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.release
+            release {
+                minifyEnabled false
+                signingConfig signingConfigs.release//打包命令行：gradlew assembleRelease
+                proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+                android.applicationVariants.all { variant ->
+                    variant.outputs.all {
+                        outputFileName = "xinlebao_${defaultConfig.versionName}_${releaseTime()}.apk"
+                    }
+                }
+            }
         }
     }
+
+}
+
+def releaseTime() {
+    return new Date().format("yyyy-MM-dd", TimeZone.getTimeZone("GMT+08:00"))
 }
 
 dependencies {
